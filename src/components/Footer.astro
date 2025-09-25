@@ -1,4 +1,81 @@
-<footer style="background-color: #10035a; color: white; text-align: center; padding: 10px; margin-top: 40px;">
-  <p style="color: white;">&copy; 2025 GoVal. All rights reserved.</p>
-  <p style="color: white;">Test: Footer visible?</p>  <!-- Test line -->
+<footer style="background-color: #10035a; color: white; padding: 40px 20px 20px; margin-top: 40px; font-family: Arial, sans-serif;">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; max-width: 1200px; margin: 0 auto; gap: 40px;">
+    <!-- Left: GoVal Vertical + Follow Us Social Icons -->
+    <div style="flex: 1; text-align: left; min-width: 150px;">
+      <!-- GoVal Stacked Vertically (Down) -->
+      <div style="writing-mode: horizontal-tb; text-orientation: mixed; font-size: 2em; font-weight: bold; color: white; margin-bottom: 20px; height: 120px; display: flex; align-items: center;">
+        GoVal
+      </div>
+      
+      <!-- Follow Us + Icons (Not Text, Logos/Unicode) -->
+      <p style="font-size: 14px; color: white; margin-bottom: 10px;">Follow us on:</p>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <a href="https://linkedin.com/company/goval" style="color: white; text-decoration: none; font-size: 18px;">🔗 LinkedIn</a>  <!-- Replace 🔗 with real logo/SVG -->
+        <a href="https://youtube.com/@goval" style="color: white; text-decoration: none; font-size: 18px;">▶️ YouTube</a>   <!-- Replace ▶️ with real logo -->
+        <a href="https://x.com/goval" style="color: white; text-decoration: none; font-size: 18px;">🐦 X (Twitter)</a>  <!-- "V" as X; replace 🐦 with real logo -->
+      </div>
+    </div>
+
+    <!-- Middle: Main Links Column (Centered) -->
+    <div style="flex: 1; text-align: center; min-width: 200px;">
+      <h3 style="font-size: 1.2em; color: white; margin-bottom: 15px; font-weight: bold;">Quick Links</h3>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li><a href="/" style="color: white; text-decoration: none; font-size: 16px; display: block; margin-bottom: 10px;">Home</a></li>
+        <li><a href="/goval-ai" style="color: white; text-decoration: none; font-size: 16px; display: block; margin-bottom: 10px;">GoVal AI</a></li>
+        <li><a href="/solutions" style="color: white; text-decoration: none; font-size: 16px; display: block; margin-bottom: 10px;">Solutions</a></li>
+        <li><a href="/about" style="color: white; text-decoration: none; font-size: 16px; display: block; margin-bottom: 10px;">About GoVal</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Beside Middle: Secondary Links Column -->
+    <div style="flex: 1; text-align: center; min-width: 200px;">
+      <h3 style="font-size: 1.2em; color: white; margin-bottom: 15px; font-weight: bold;">Resources</h3>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li><a href="/blogs" style="color: white; text-decoration: none; font-size: 16px; display: block; margin-bottom: 10px;">Blogs</a></li>
+        <li><a href="/stories" style="color: white; text-decoration: none; font-size: 16px; display: block; margin-bottom: 10px;">Customer Stories</a></li>
+        <li><a href="/contact" style="color: white; text-decoration: none; font-size: 16px; display: block; margin-bottom: 10px;">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Most: Message Icon (Fully Down, Bottom-Right) -->
+    <div style="flex: 0 0 auto; text-align: right; position: relative;">
+      <a href="/contact" style="color: white; text-decoration: none; font-size: 24px; position: sticky; bottom: 5; right: 0;">
+        📧  <!-- Message/Email Icon; Replace with real SVG logo for "mgs" -->
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom: Copyright (Centered, Unchanged Color) -->
+  <div style="border-top: 1px solid #333; padding-top: 20px; text-align: center; margin-top: 40px;">
+    <p style="color: white; margin: 0; font-size: 14px;">&copy; 2025 GoVal. All rights reserved.</p>
+  </div>
 </footer>
+
+<style>
+  /* Hover Effects for Links (White to Light Blue) */
+  :global(footer a:hover) {
+    color: #007bff !important;  /* Blue hover for interactivity */
+    transition: color 0.3s;
+  }
+  
+  /* Responsive: Stack on Mobile */
+  @media (max-width: 768px) {
+    :global(footer > div:first-child) {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+    :global(footer div[style*="writing-mode"]) {
+      writing-mode: horizontal-tb;  /* Horizontal on mobile */
+      height: auto;
+    }
+    :global(footer > div:first-child) {
+      justify-content: center;
+      gap: 20px;
+    }
+    :global(footer a[style*="position: absolute"]) {
+      position: static;  /* Icon centers on mobile */
+      margin-top: 20px;
+    }
+  }
+</style>
