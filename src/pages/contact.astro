@@ -1,0 +1,343 @@
+---
+import Footer from '../components/Footer.astro';  // Same footer as main page
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - GoVal</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      background-color: #ffffff; 
+      color: #333; 
+      line-height: 1.6; 
+    }
+    .main-container { 
+      display: flex; 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      padding: 60px 20px; 
+      gap: 40px; 
+    }
+    .left-side { 
+      flex: 1; 
+      max-width: 500px; 
+      text-align: left;  /* Left-align for form readability */
+    }
+    .right-side { 
+      flex: 1; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: flex-start; 
+    }
+    .contact-image { 
+      width: 500px;  /* Increased for square look (matches 500px height) */
+      height: 500px;  /* Matches height from "Contact Us" to "Organization" (~450-500px form top) */
+      border-radius: 8px;  /* Rectangular square with subtle rounded corners (0 for sharp) */
+      object-fit: cover; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+      border: 3px solid #007bff; 
+      align-self: start; 
+    }
+    .locations { 
+      margin-top: 20px; 
+      padding: 20px; 
+      background-color: #f8f9ff;  /* Subtle bg for section */
+      border-radius: 8px; 
+      width: 100%; 
+      text-align: left; 
+      color: #333;  /* Black/dark grey for text (changed from light blue) */
+      font-size: 14px; 
+      line-height: 1.5; 
+    }
+    .locations h3 { 
+      color: #007bff;  /* Blue for headings */
+      margin-bottom: 10px; 
+      font-size: 16px; 
+    }
+    .locations strong { 
+      color: #007bff;  /* Blue for country names */
+    }
+    .email-link { 
+      color: #007bff; 
+      text-decoration: none; 
+      font-weight: bold; 
+    }
+    .email-link:hover { 
+      text-decoration: underline; 
+    }
+    .title { 
+      font-size: 2.5em; 
+      background: linear-gradient(45deg, #8b5cf6, #ec4899, #3b82f6); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      background-clip: text; 
+      margin-bottom: 20px; 
+      font-weight: bold; 
+      text-align: center;  /* Center title */
+    }
+    .para { 
+      font-size: 16px; 
+      color: #666; 
+      margin-bottom: 40px; 
+      max-width: 100%; 
+      text-align: center; 
+    }
+    .contact-us { 
+      font-size: 14px; 
+      color: #000; 
+      margin-bottom: 30px; 
+      font-weight: bold; 
+      display: block; 
+      text-align: center; 
+    }
+    form { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 20px; 
+      max-width: 100%; 
+      text-align: left; 
+    }
+    label { 
+      font-size: 14px; 
+      color: #333; 
+      font-weight: bold; 
+      margin-bottom: 5px; 
+      display: block; 
+    }
+    input, select, textarea { 
+      width: 100%; 
+      padding: 12px; 
+      border: 1px solid #ddd; 
+      border-radius: 5px; 
+      font-size: 16px; 
+      box-sizing: border-box; 
+    }
+    input:focus, select:focus, textarea:focus { 
+      outline: none; 
+      border-color: #007bff; 
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); 
+    }
+    .required { color: #ff0000; }
+    textarea { 
+      resize: vertical; 
+      min-height: 120px; 
+    }
+    .checkbox-group { 
+      display: flex; 
+      align-items: flex-start; 
+      gap: 10px; 
+      font-size: 14px; 
+    }
+    .checkbox-group input[type="checkbox"] { 
+      margin-top: 2px; 
+      width: auto; 
+    }
+    .privacy-text { 
+      font-size: 12px; 
+      color: #999; 
+      margin-top: 5px; 
+      line-height: 1.4; 
+    }
+    .submit-btn { 
+      background-color: #ff9500; 
+      color: white; 
+      padding: 15px 30px; 
+      font-size: 18px; 
+      font-weight: bold; 
+      border: none; 
+      border-radius: 5px; 
+      cursor: pointer; 
+      transition: background-color 0.3s; 
+      align-self: center; 
+      margin-top: 10px; 
+    }
+    .submit-btn:hover { 
+      background-color: #e68900; 
+    }
+    .support { 
+      text-align: center; 
+      margin-top: 40px; 
+      padding: 20px; 
+      border-top: 1px solid #eee; 
+      max-width: 100%; 
+    }
+    .support h3 { 
+      color: #333; 
+      margin-bottom: 10px; 
+    }
+    .support p { 
+      color: #666; 
+      margin: 5px 0; 
+    }
+    /* Responsive: Stack on Mobile */
+    @media (max-width: 768px) { 
+      .main-container { 
+        flex-direction: column; 
+        padding: 40px 15px; 
+        gap: 20px; 
+      }
+      .left-side, .right-side { 
+        max-width: 100%; 
+        text-align: center; 
+      }
+      .contact-image { 
+        width: 100%; 
+        height: 250px;  /* Smaller square-ish on mobile */
+        margin: 0 auto; 
+      }
+      .title { font-size: 2em; text-align: center; } 
+      .para { text-align: center; } 
+      .contact-us { text-align: center; } 
+      form { gap: 15px; text-align: center; } 
+      input, select, textarea { padding: 10px; font-size: 16px; }  /* Prevents zoom */
+      .locations { text-align: center; padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- Left Side: Title, Para, Form, Support (Swapped) -->
+    <div class="left-side">
+      <!-- Title with Gradient -->
+      <h1 class="title">Get in Touch with GoVal</h1>
+      
+      <!-- Paragraph -->
+      <p class="para">
+        We'd love to hear from you! Whether you have questions about our solutions, need a demo, or want to discuss how GoVal can help streamline your validation processes, our team is here to assist you.
+      </p>
+      
+      <!-- Contact Us Label -->
+      <h6 class="contact-us">Contact Us</h6>
+      
+      <!-- Form (Full on Left) -->
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <!-- Name -->
+        <div>
+          <label for="name">Name <span class="required">*</span></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <!-- Business Email -->
+        <div>
+          <label for="email">Business Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" placeholder="yourname@company.com" required>
+        </div>
+        
+        <!-- Contact Number -->
+        <div>
+          <label for="phone">Contact Number with Country Code <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="+1 (country code)" required>
+        </div>
+        
+        <!-- Country Dropdown -->
+        <div>
+          <label for="country">Country <span class="required">*</span></label>
+          <select id="country" name="country" required>
+            <option value="">Select Country</option>
+            <option value="US">United States</option>
+            <option value="UK">United Kingdom</option>
+            <option value="IN">India</option>
+            <option value="CA">Canada</option>
+            <option value="AU">Australia</option>
+            <option value="DE">Germany</option>
+            <option value="FR">France</option>
+            <option value="JP">Japan</option>
+            <option value="BR">Brazil</option>
+            <!-- Add more countries as needed -->
+          </select>
+        </div>
+        
+        <!-- Organization -->
+        <div>
+          <label for="organization">Organization</label>
+          <input type="text" id="organization" name="organization">
+        </div>
+        
+        <!-- How Can I Help? -->
+        <div>
+          <label for="message">How Can I Help?</label>
+          <textarea id="message" name="message" placeholder="Tell us more about your needs..."></textarea>
+        </div>
+        
+        <!-- Checkbox + Privacy Text -->
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" name="terms" required>
+          <label for="terms" style="font-weight: normal; margin-bottom: 0;">I agree to the Terms of Use and Privacy Policy</label>
+        </div>
+        <p class="privacy-text">
+          By submitting this form, you agree to the Terms of Use and Privacy Policy. We value your privacy and will not share your information without your consent.
+        </p>
+        
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+      
+      <!-- Customer Support (Below Form, on Left) -->
+      <div class="support">
+        <h3>Customer Support</h3>
+        <p>Email:</p>
+        <p><a href="mailto:support@goval.com" class="email-link">support@goval.com</a></p>
+      </div>
+    </div>
+
+    <!-- Right Side: Image + Locations Below (Swapped) -->
+    <div class="right-side">
+      <img 
+        src="https://www.govalidation.com/images/customer-support.jpg"  
+        alt="GoVal Contact Image" 
+        class="contact-image"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+      />
+      <!-- Fallback for Image (Square Rectangular) -->
+      <div style="display: none; width: 500px; height: 500px; border-radius: 8px; background-color: #007bff; border: 3px solid #007bff; margin-top: -500px;"></div>
+      
+      <!-- Locations Section (Black Text) -->
+      <div class="locations">
+        <h3>Email:</h3>
+        <p>Sales Enquiry: <a href="mailto:info@govalidation.com" class="email-link">info@govalidation.com</a></p>
+        <p>Technical Support: <a href="mailto:govalsupport@adventsys.co" class="email-link">govalsupport@adventsys.co</a></p>
+        <br>
+        <h3>Locations:</h3>
+        <p><strong>INDIA</strong><br>
+        1st Floor, Prestige Samrah Plaza,<br>
+        St Marks Road, Shanthala Nagar,<br>
+        Ashok Nagar,<br>
+        Bengaluru 560 001, India<br>
+        Phone: +91 99000 23710, +91 90081 50710</p>
+        <br>
+        <p><strong>USA</strong><br>
+        7232 BROADWAY STE 306,<br>
+        JACKSON HEIGHTS NY 11372,<br>
+        USA<br>
+        Phone: +1 (408) 457-0086, +1 (908) 656-8258</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Same Footer -->
+  <Footer />
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();  // Prevent real submit for now
+      const form = document.getElementById('contactForm');
+      const terms = document.getElementById('terms');
+      
+      if (!terms.checked) {
+        alert('Please agree to the Terms of Use and Privacy Policy.');
+        return;
+      }
+      
+      // Simulate submission (replace with real API call)
+      alert('Form submitted successfully! We\'ll get back to you soon.');
+      form.reset();  // Clear form
+    }
+  </script>
+</body>
+</html>
