@@ -1,7 +1,13 @@
 import { defineConfig } from 'astro/config';
-import netlify from '@astrojs/netlify/functions'; // or "@astrojs/netlify/static" if it's static only
+import vercel from '@astrojs/vercel/serverless';  // Serverless adapter for Vercel (dynamic/SSR support)
 
 export default defineConfig({
-  output: 'server',   // or "static" if no SSR
-  adapter: netlify(),
+  output: 'server',  // Serverless mode: Enables API routes, edge functions (use 'static' for pure static)
+  adapter: vercel({
+    webAnalytics: true,  // Optional: Enables Vercel Web Analytics (free, tracks page views/errors)
+    // runtime: 'nodejs18.x',  // Optional: Force Node version (default auto-detects)
+  }),
+  // Optional: Other Astro settings (e.g., integrations)
+  // site: 'https://your-site.vercel.app',  // Uncomment for base URL (after deploy)
+  // vite: { ssr: { noExternal: ['some-lib'] } },  // If SSR issues with deps
 });
