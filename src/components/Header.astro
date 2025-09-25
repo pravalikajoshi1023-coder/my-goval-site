@@ -53,23 +53,60 @@ const currentPage = Astro.url.pathname;  // Optional: For active link highlighti
       flex-direction: column;
       gap: 10px;
       text-align: center;
+      padding: 10px 15px;  /* Slightly less padding on mobile */
     }
     :global(header div[style*="flex-direction: row"]) {
       flex-direction: column;  /* Stack logo above GOVAL on mobile */
       gap: 5px;
+      width: 100%;  /* Full width for centering */
     }
     :global(header ul) {
-      flex-direction: row;  /* Horizontal menu */
+      flex-direction: row;  /* Horizontal menu on tablets/small mobiles */
       gap: 10px;
+      flex-wrap: wrap;  /* Wrap if needed, prevents overflow */
+      justify-content: center;
+      width: 100%;
+    }
+    :global(header li) {
+      margin: 0 5px;  /* Extra spacing for touch targets */
+    }
+    :global(header a) {
+      font-size: 14px;  /* Slightly smaller font for mobile */
+      padding: 5px 10px;  /* Touch-friendly padding */
+      min-width: 80px;  /* Ensures tappable size */
+      text-align: center;
     }
     :global(header img) {
       height: 60px;  /* Smaller on mobile */
+      max-width: 120px;
     }
     :global(header h1) {
       font-size: 2em;
     }
     :global(header div[style*="text-align: left"]) {
       text-align: center;
+    }
+    
+    /* Extra for very small phones: Stack menu vertically */
+    @media (max-width: 480px) {
+      :global(header ul) {
+        flex-direction: column;  /* Vertical stack for tiny screens */
+        gap: 8px;
+        align-items: center;
+      }
+      :global(header a) {
+        font-size: 16px;  /* Back to normal for readability in column */
+        padding: 8px 15px;
+        width: 100%;
+        max-width: 200px;
+        display: block;  /* Full-width buttons */
+        border: 1px solid #ddd;  /* Subtle border for separation */
+        border-radius: 4px;
+        background-color: #f9f9f9;  /* Light bg for buttons */
+      }
+      :global(header a:hover) {
+        background-color: #e9e9e9;  /* Hover feedback on mobile (tap simulation) */
+      }
     }
   }
 </style>
